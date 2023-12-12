@@ -25,3 +25,13 @@ def get_invalid_option_help(option):
     Opção {repr(option)} inválida.
     {get_command_options()}
     """
+
+
+def get_command_help(data_path) -> str:
+    return f"""
+Analise informações do Spotify baseado no arquivo '{data_path}'.
+
+Modo de uso:
+    python3 src/spotify.py [ opção ]
+{get_command_options()}
+"""
