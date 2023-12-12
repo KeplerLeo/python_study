@@ -73,3 +73,23 @@ def handle_user_input(data, option) -> None:
         print(get_invalid_option_help(option))
         raise ValueError
     process_music_analysis(data, option)
+
+
+def main(file_path) -> int:
+    cli_args = sys.argv[1:]
+    if not cli_args:
+        print(get_command_help(file_path))
+        return 1
+
+    data = read_csv(file_path)
+
+    try:
+        handle_user_input(data, cli_args[0])
+    except ValueError:
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main(DATA_PATH))
