@@ -34,6 +34,15 @@ def get_command_help(data_path) -> str:
     {get_command_options()}"""
 
 
-def get_most_instrumental_songs(data: List[Dict[str, str]]) -> List[Dict[str, str]]:
+def get_most_instrumental_songs(
+        data: List[Dict[str, str]]
+        ) -> List[Dict[str, str]]:
     return sorted(data, key=lambda x: float(x["Instrumentalness"]),
+                  reverse=True)[:10]
+
+
+def get_most_danceable_songs(
+        data: List[Dict[str, str]]
+        ) -> List[Dict[str, str]]:
+    return sorted(data, key=lambda x: float(x["Danceability"]),
                   reverse=True)[:10]
