@@ -66,3 +66,10 @@ def process_music_analysis(data, option) -> None:
     print(f"Top 10 músicas mais {OPTIONS[option][0]}:")
     for index, song in enumerate(OPTIONS[option][1](data), start=1):
         print(f"{index:>2} - '{song['Track']}' de {song['Artist']}")
+
+
+def handle_user_input(data, option) -> None:
+    if option not in OPTIONS:
+        print(get_invalid_option_help(option))
+        raise ValueError
+    process_music_analysis(data, option)
