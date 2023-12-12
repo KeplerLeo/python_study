@@ -53,3 +53,16 @@ def get_most_energetic_songs(
         ) -> List[Dict[str, str]]:
     return sorted(data, key=lambda x: float(x["Energy"]),
                   reverse=True)[:10]
+
+
+OPTIONS = {
+    "1": ("instrumentais", get_most_instrumental_songs),
+    "2": ("dançantes", get_most_danceable_songs),
+    "3": ("enérgicas", get_most_energetic_songs),
+}
+
+
+def process_music_analysis(data, option) -> None:
+    print(f"Top 10 músicas mais {OPTIONS[option][0]}:")
+    for index, song in enumerate(OPTIONS[option][1](data), start=1):
+        print(f"{index:>2} - '{song['Track']}' de {song['Artist']}")
