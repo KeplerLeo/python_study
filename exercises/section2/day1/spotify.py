@@ -23,15 +23,17 @@ def read_csv(path: str) -> List[Dict[str, str]]:
 def get_invalid_option_help(option):
     return f"""
     Opção {repr(option)} inválida.
-    {get_command_options()}
-    """
+    {get_command_options()}"""
 
 
 def get_command_help(data_path) -> str:
     return f"""
-Analise informações do Spotify baseado no arquivo '{data_path}'.
-
-Modo de uso:
+    Analise informações do Spotify baseado no arquivo '{data_path}'.
+    Modo de uso:
     python3 src/spotify.py [ opção ]
-{get_command_options()}
-"""
+    {get_command_options()}"""
+
+
+def get_most_instrumental_songs(data: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    return sorted(data, key=lambda x: float(x["Instrumentalness"]),
+                  reverse=True)[:10]
