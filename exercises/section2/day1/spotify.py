@@ -18,3 +18,10 @@ def read_csv(path: str) -> List[Dict[str, str]]:
     """read csv file and return list of dictionaries"""
     with open(path, "r") as file:
         return list(csv.DictReader(file))
+
+
+def get_invalid_option_help(option):
+    return f"""
+    Opção {repr(option)} inválida.
+    {get_command_options()}
+    """
