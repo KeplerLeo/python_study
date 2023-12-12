@@ -46,3 +46,10 @@ def get_most_danceable_songs(
         ) -> List[Dict[str, str]]:
     return sorted(data, key=lambda x: float(x["Danceability"]),
                   reverse=True)[:10]
+
+
+def get_most_energetic_songs(
+        data: List[Dict[str, str]]
+        ) -> List[Dict[str, str]]:
+    return sorted(data, key=lambda x: float(x["Energy"]),
+                  reverse=True)[:10]
